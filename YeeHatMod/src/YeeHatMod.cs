@@ -1,17 +1,14 @@
 ﻿using DuckGame;
 using System.Reflection;
 using System.Collections.Generic;
-using System.Linq;
-using System;
 using System.Threading;
-using Microsoft.Xna.Framework;
 
 [assembly: AssemblyTitle("Yee Hat")]
 [assembly: AssemblyCompany("KodenejmBerni")]
 [assembly: AssemblyDescription("This mod adds more Yee to your life.")]
 [assembly: AssemblyVersion("1.1.0.0")]
 
-namespace DuckGame.YeeHatMod
+namespace DG.YeeHatMod
 {
     internal class Main : IAutoUpdate
     {
@@ -55,8 +52,6 @@ namespace DuckGame.YeeHatMod
         public static string musicalSoundPath = "yee_musical_sound.wav";
         public static string originalSoundPath = "yee_original_sound.wav";
 
-        public static ushort musicalSoundChancePercentage = 20;
-
 
         public YeeTeamHat(float xpos, float ypos, Team t)
             : base(xpos, ypos, t)
@@ -84,14 +79,13 @@ namespace DuckGame.YeeHatMod
 
         public override void Quack(float volume, float pitch)
         {
-            Random rnd = new Random();
-            if (rnd.Next(100) >= musicalSoundChancePercentage)
+            if (equippedDuck.crouch)
             {
-                SFX.Play(Mod.GetPath<YeeHatMod>(originalSoundPath), volume, pitch);
+                SFX.Play(Mod.GetPath<YeeHatMod>(musicalSoundPath), volume, pitch);
             }
             else
             {
-                SFX.Play(Mod.GetPath<YeeHatMod>(musicalSoundPath), volume, pitch);
+                SFX.Play(Mod.GetPath<YeeHatMod>(originalSoundPath), volume, pitch);
             }
         }
     }

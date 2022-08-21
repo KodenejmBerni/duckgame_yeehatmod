@@ -1,2 +1,3 @@
-YeeHatMod_compiled.dll
-YeeHatMod_compiled.hash
+/bin
+/obj
+/YeeHatMod/YeeHatMod_compiled.dll
