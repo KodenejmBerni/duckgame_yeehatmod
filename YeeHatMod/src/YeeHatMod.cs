@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace DG.YeeHatMod
 {
-    internal class Main : IAutoUpdate
+    internal class ModMain : IAutoUpdate
     {
         public void Update()
         {
@@ -92,7 +92,7 @@ namespace DG.YeeHatMod
 
     public class YeeHatMod : Mod
     {
-        internal static Main main = new Main();
+        internal static ModMain main = new ModMain();
 
         public YeeHatMod() : base() { }
 
@@ -106,6 +106,7 @@ namespace DG.YeeHatMod
             newTeam._metadata = newTeam_temp.metadata;
 
             Teams.AddExtraTeam(newTeam);
+            // Teams.core.teams.Add(newTeam);
             base.OnPostInitialize();
 
             Thread thread = new Thread(ExecuteOnceLoaded);
