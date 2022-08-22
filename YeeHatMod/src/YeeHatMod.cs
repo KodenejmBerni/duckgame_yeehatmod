@@ -105,8 +105,8 @@ namespace DG.YeeHatMod
             newTeam._customParticles = newTeam_temp.customParticles;
             newTeam._metadata = newTeam_temp.metadata;
 
-            Teams.AddExtraTeam(newTeam);
-            // Teams.core.teams.Add(newTeam);
+            // Teams.AddExtraTeam(newTeam);
+            Teams.core.teams.Add(newTeam);
             base.OnPostInitialize();
 
             Thread thread = new Thread(ExecuteOnceLoaded);
